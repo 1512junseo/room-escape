@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signal Flare Pad - Custom</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 100px; }
+    input { padding: 10px; font-size: 18px; }
+    button { padding: 10px 20px; font-size: 18px; margin-left: 10px; }
+    #result { margin-top: 20px; font-size: 20px; }
+    video { margin-top: 20px; width: 100%; max-width: 800px; display: none; }
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Enter the Final Operation Code</h1>
+  <input type="text" id="answer" placeholder="Type here">
+  <button onclick="checkAnswer()">Submit</button>
+  <div id="result"></div>
+  <video id="flareVideo" controls>
+    <source src="flare.mp4" type="video/mp4">
+  </video>
+  <audio id="voiceMessage">
+    <source src="bang.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById('answer').value.trim().toUpperCase();
+      if (input === 'CHROMITE') {
+        document.getElementById('result').innerText = '✅ Correct! Operation Chromite Begins!';
+        const video = document.getElementById('flareVideo');
+        const audio = document.getElementById('voiceMessage');
+        video.style.display = 'block';
+        video.play();
+        audio.play();
+      } else {
+        document.getElementById('result').innerText = '❌ Incorrect. Try again.';
+      }
+    }
+  </script>
+</body>
+</html>
